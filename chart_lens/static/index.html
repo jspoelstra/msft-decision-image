@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Verify a stock-performance claim from a chart, then compare the judgment with calculated truth. Educational research, not investment advice.">
+  <title>Chart Lens · Research workspace</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to workspace</a>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Chart Lens home"><span class="brand-icon" aria-hidden="true">▥</span> Chart Lens<span class="brand-dot">.</span></a>
+    <p class="sidebar-caption">RESEARCH WORKSPACE</p>
+    <nav aria-label="Workspace">
+      <button class="nav-item active" data-view="predict" aria-current="page"><span aria-hidden="true">◈</span> Check a claim <span class="nav-arrow" aria-hidden="true">↗</span></button>
+      <button class="nav-item" data-view="backtest"><span aria-hidden="true">▤</span> Historical evaluation</button>
+      <button class="nav-item" data-view="history"><span aria-hidden="true">◷</span> Run history</button>
+      <button class="nav-item" data-view="about"><span aria-hidden="true">ⓘ</span> Experiment guide</button>
+    </nav>
+    <div class="sidebar-bottom"><span class="eyebrow">THE EXPERIMENT</span><p>One chart.<br>One verifiable claim.</p><span class="sidebar-fine">Microsoft-Decision-1.1<br>Image-only verification</span></div>
+    <div class="local-badge"><span aria-hidden="true">●</span> Local-first research</div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span>Experiments <span class="slash">/</span> <strong id="breadcrumb">Check a claim</strong></span><span id="mode-badge" class="badge">Connecting…</span></header>
+    <main id="main" tabindex="-1">
+      <div id="mode-notice" class="notice" role="status">Connecting to the local research service. No judgments have been generated.</div>
+      <div id="error" class="notice error" role="alert" hidden></div>
+      <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+      <section id="view-predict" class="view">
+        <div class="page-heading"><div><p class="eyebrow">FROM PIXELS TO PROBABILITIES</p><h1>A different lens on the market.</h1><p class="subtitle">Explore what a model sees in a chart. Inspect every decision.</p></div><span class="outline-tag">30 sessions → 1 decision</span></div>
+        <div class="predict-layout">
+          <section class="card setup-card" aria-labelledby="predict-title">
+            <div class="section-kicker">01 <span>SET UP YOUR EXPERIMENT</span></div>
+            <h2 id="predict-title">Check a claim</h2><p class="muted">A chart is the only market evidence the model receives.</p>
+            <form id="predict-form">
+              <label for="predict-ticker">Target ticker</label><input id="predict-ticker" name="ticker" value="MSFT" maxlength="20" required autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="ticker-help"><p id="ticker-help" class="field-help">U.S. stocks & ETFs · e.g. MSFT, AAPL, SPY</p>
+              <label for="predict-comparison">Comparison ticker</label><input id="predict-comparison" name="comparison" value="AAPL" maxlength="20" required autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="comparison-help"><p id="comparison-help" class="field-help">Choose the other stock or ETF. Both identities are hidden from the model.</p>
+              <input id="predict-scheme" name="scheme" type="hidden" value="claim">
+              <p class="eyebrow">THE FIXED CLAIM</p><p><strong>The target experienced a smaller maximum drawdown than the comparison over the displayed 30 sessions.</strong></p>
+              <div id="scheme-guide" class="scheme-guide"></div>
+              <div class="origin-note"><span class="status-dot" aria-hidden="true"></span><div>Latest configured session<strong id="latest-session">Awaiting configuration</strong><small>Completed regular sessions only. Compare the same displayed window; no future outcome is needed.</small></div></div>
+              <button id="predict-submit" class="button primary wide" type="submit" disabled>Check claim <span aria-hidden="true">↗</span></button>
+              <p class="field-help centered">No trade execution. No investment recommendations.</p>
+            </form>
+          </section>
+          <section class="card chart-intro" aria-labelledby="chart-intro-title">
+            <div class="card-topline"><span class="eyebrow">THE MODEL'S VIEW</span><span class="badge neutral">IMAGE ONLY</span></div>
+            <h2 id="chart-intro-title">Follow the path, not just the finish.</h2><p class="muted">Thirty trading sessions, two anonymous price paths, and one question about peak-to-trough losses.</p>
+            <div class="illustration" aria-label="Illustrative chart only, not market data or a prediction">
+              <span class="illustration-label">ILLUSTRATION · NOT MARKET DATA</span>
+              <svg viewBox="0 0 640 230" role="img" aria-label="Two stylized price paths demonstrating the comparison format">
+                <defs><linearGradient id="chart-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#167c69" stop-opacity=".16"/><stop offset="1" stop-color="#167c69" stop-opacity="0"/></linearGradient></defs>
+                <g stroke="#e1e6e2" stroke-width="1"><path d="M25 35H620M25 85H620M25 135H620M25 185H620"/><path d="M100 20V210M230 20V210M360 20V210M490 20V210" stroke-dasharray="3 5"/></g>
+                <path d="M25 170L55 162L85 179L115 145L145 153L175 125L205 133L235 101L265 117L295 88L325 103L355 78L385 91L415 55L445 70L475 48L505 64L535 27L565 46L595 23L620 34V220H25Z" fill="url(#chart-fill)"/>
+                <g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M25 170L85 140L145 110L205 65L265 155L325 139L385 95L445 126L505 105L565 70L620 50" stroke="#a84d14" stroke-width="2" stroke-dasharray="7 5"/><path d="M25 170L55 162L85 179L115 145L145 153L175 125L205 133L235 101L265 117L295 88L325 103L355 78L385 91L415 55L445 70L475 48L505 64L535 27L565 46L595 23L620 34" stroke="#167c69" stroke-width="3"/></g>
+              </svg>
+              <div class="legend"><span>● Target</span><span>◇ Comparison</span></div>
+            </div>
+            <div class="feature-grid"><div><span class="feature-number">30</span><h3>Trading sessions</h3><p>Completed sessions, not calendar days.</p></div><div><span class="feature-number">2</span><h3>Anonymous paths</h3><p>Your target and comparison, on one baseline.</p></div><div><span class="feature-number">0</span><h3>Extra market signals</h3><p>No news, fundamentals, or future data.</p></div></div>
+            <div class="subtle-note"><span aria-hidden="true">↗</span> Compare each path's largest percentage loss from an earlier closing peak to a later trough. Final endpoints cannot tell the whole story.</div>
+          </section>
+        </div>
+      </section>
+      <section id="view-backtest" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">TEST VISUAL JUDGMENT, NOT FORECASTING</p><h1>Put the experiment to the test.</h1><p class="subtitle">Frozen inputs. Explicit abstentions. Baselines on the same answered sessions.</p></div></div>
+        <section class="card" aria-labelledby="backtest-title"><div class="section-kicker">01 <span>DEFINE A HISTORICAL RUN</span></div><h2 id="backtest-title">Historical evaluation</h2>
+          <p>The fixed claim: <strong>The target experienced a smaller maximum drawdown than the comparison over the displayed 30 sessions.</strong></p>
+          <form id="backtest-form"><input id="backtest-scheme" name="scheme" type="hidden" value="claim"><div class="form-grid"><div><label for="backtest-ticker">Target ticker</label><input id="backtest-ticker" name="ticker" value="MSFT" maxlength="20" required autocomplete="off" spellcheck="false"></div><div><label for="backtest-comparison">Comparison ticker</label><input id="backtest-comparison" name="comparison" value="AAPL" maxlength="20" required autocomplete="off" spellcheck="false"></div><div><label for="backtest-start">First chart-ending session</label><input id="backtest-start" name="start" type="date" required></div><div><label for="backtest-count">Charts (consecutive sessions)</label><input id="backtest-count" name="count" type="number" min="1" max="252" step="1" value="60" required></div></div><div class="form-footer"><p class="muted">Non-session starts resolve to an eligible exchange session.<br>Preview the interval and maximum calls before confirming.</p><button id="preview-submit" class="button primary" disabled>Preview evaluation <span aria-hidden="true">→</span></button></div></form>
+          <div id="preview" class="preview" hidden></div>
+        </section>
+      </section>
+      <section id="view-history" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">YOUR RESEARCH TRAIL</p><h1>Every run, inspectable.</h1><p class="subtitle">Reopen local experiments, download artifacts, or remove a run.</p></div><button id="refresh-history" class="button secondary">Refresh history</button></div>
+        <section class="card"><div id="history-content" aria-live="polite">Loading recent runs…</div></section>
+      </section>
+      <section id="view-about" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">READ BEFORE INTERPRETING</p><h1>Curiosity, with guardrails.</h1><p class="subtitle">An image-only claim verification experiment, not a trading system.</p></div></div>
+        <div class="guide-grid"><article class="card"><h2>What is being checked?</h2><p>“The target experienced a smaller maximum drawdown than the comparison over the displayed 30 sessions.” Maximum drawdown is the largest percentage decline from an earlier closing-price peak to a later trough, both inside this window. Smaller is better; equal drawdowns contradict the claim. Flat or rising paths have zero drawdown.</p><p>The two anonymous paths share a starting baseline. Measure each loss relative to its earlier peak, not as the vertical percentage-point drop on the chart. Final endpoints alone cannot answer this question. Prices are split-adjusted, not dividend-adjusted. The upper target-price panel retains historical 52-week extremes for context. No future prices are predicted.</p></article><article class="card"><h2>What does Decision see?</h2><p>Only the rendered chart and fixed rubric. No tickers, calendar dates, drawdown values, ground truth, news, or numerical market features accompany the image. Numerical truth is attached only after the judgment is saved.</p><p>Decision can select Supported, Contradicted, or Insufficient visual evidence. The last choice is an abstention, not a third kind of numerical truth. No written rationale is invented.</p></article><article class="card"><h2>How to read the results</h2><p>Accuracy, balanced accuracy, and F1 use answered claims. Answer coverage shows answered / evaluated; evaluation coverage shows evaluated / requested. Overall accuracy counts abstentions as incorrect. Probability losses and calibration include abstentions.</p><p>The confusion matrix includes abstentions. Drawdown-margin slices reveal near-ties versus obvious gaps. A positive Comparison-minus-Target margin supports the claim. Baselines use the same answered sessions; historical majority uses only earlier windows. Small samples are exploratory and overlapping windows are dependent. Visual accuracy is not forecasting ability.</p></article><article class="card"><h2>Data & operating modes</h2><p>Live mode uses Microsoft Foundry. Demo mode uses synthetic scores, NOT Foundry judgments. Legacy forecast and SPY-outperformance runs remain inspectable under their original labels and reports, but cannot resume as drawdown comparisons.</p><p>Yahoo Finance data via yfinance is for this local personal experiment. Confirm applicable data terms before hosted-model processing or sharing exports. No silent provider substitution.</p></article></div>
+      </section>
+      <section id="run-panel" class="card run-panel" aria-labelledby="run-title" hidden>
+        <div class="run-heading"><div><p class="eyebrow" id="run-kicker">EXPERIMENT RUN</p><h2 id="run-title">Run</h2></div><span id="run-status" class="badge"></span></div>
+        <div id="run-meta" class="meta-grid"></div><div id="run-warning" class="notice warning" hidden></div>
+        <div id="run-progress" class="progress-section"><div class="progress-label"><span id="run-stage">Queued</span><span id="run-progress-text"></span></div><progress id="progress" max="100" value="0" aria-label="Run progress"></progress><p class="field-help">Stages are reported by the server: data retrieval → chart rendering → inference → evaluation.</p></div>
+        <div id="run-actions" class="action-row"></div>
+        <div id="run-report"></div>
+        <div class="section-heading"><h3>Per-session evidence</h3><label class="inline-label" for="row-status">Show <select id="row-status"><option value="all">All statuses</option><option value="evaluated">Evaluated</option><option value="scored">Scored</option><option value="pending">Pending</option><option value="failed">Failed</option><option value="skipped">Skipped</option></select></label></div>
+        <p class="field-help">Select an origin to inspect its exact chart, probability distribution, and stored decision.</p><div id="rows-content"></div>
+      </section>
+      <footer><span class="footer-mark" aria-hidden="true">◈</span><p><strong>Research, not recommendations.</strong> Educational experiment only. Not investment advice. Reading historical charts does not establish forecasting ability.</p><span class="footer-note">Built for inspection.<br>Not for trading.</span></footer>
+    </main>
+  </div>
+  <dialog id="inspector" aria-labelledby="inspector-title"><div class="dialog-header"><div><p class="eyebrow">DECISION INSPECTOR</p><h2 id="inspector-title">Session evidence</h2></div><button id="close-inspector" class="icon-button" aria-label="Close inspector">×</button></div><div id="inspector-content"></div></dialog>
+</body>
+</html>
