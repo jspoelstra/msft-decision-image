@@ -3,11 +3,39 @@ title: Chart Lens
 description: A local chart-claim verification and historical evaluation demo for Microsoft Decision 1.1.
 ---
 
-Chart Lens asks a narrow question: **can Microsoft Decision 1.1 tell whether a
-chart supports the claim "The target experienced a smaller maximum drawdown
-than the comparison over the displayed 30 sessions"?** Choose both tickers,
-inspect the same anonymous PNG the model receives, then compare its
-judgment with calculated truth and straightforward baselines.
+## Chart Lens
+
+**One chart. One verifiable claim. Every decision open to inspection.**
+
+An educational, local-first demo for exploring image-only chart verification
+with Microsoft Decision 1.1. Choose two tickers, inspect the anonymous chart
+the model receives, and compare its judgment with calculated truth.
+The question stays deliberately narrow:
+
+> Did the target experience a smaller maximum drawdown than the comparison
+> over the displayed 30 trading sessions?
+
+Maximum drawdown is the largest percentage loss from an earlier closing peak
+to a later trough. This tests whether a model can follow a price path, not
+predict where prices go next.
+
+![Chart Lens workspace with ticker inputs, the fixed claim, and an illustration of two anonymous price paths](doc/screenshots/claim-workspace.png)
+
+[Try it locally](#try-it-locally) · [Take the tour](#a-quick-tour) ·
+[Connect a real model](#use-real-data-and-decision) ·
+[Understand the results](#interpret-the-results)
+
+### What you can learn
+
+* Explore how a chart becomes an image-only classification task.
+* Inspect Supported, Contradicted, and Insufficient visual evidence judgments.
+* Compare judgments with numerical truth, baselines, and answer coverage.
+* Download the exact chart, run manifest, and per-session results for inspection.
+
+> [!IMPORTANT]
+> Screenshots use synthetic demo data and scores, not Foundry judgments.
+> They illustrate the workflow, not Microsoft Decision 1.1 performance.
+> This is an educational experiment, not investment advice.
 
 ## Try it locally
 
@@ -26,8 +54,42 @@ You can download the exact PNG, run manifest, and per-session CSV. Run history
 persists locally; a cancelled historical evaluation can resume under its
 original settings.
 
-**Demo mode uses synthetic prices and scores.** It does not call Yahoo or
-Microsoft Foundry and cannot measure the model's visual judgment.
+> [!TIP]
+> Start in demo mode to explore the full workflow without live credentials or
+> inference charges. It uses synthetic prices and scores, does not call Yahoo
+> or Microsoft Foundry, and cannot measure the model's visual judgment.
+
+## A quick tour
+
+### 1. Set up a claim check
+
+Choose a target and comparison, such as `MSFT` and `AAPL`, then select
+**Check claim**. The workspace above introduces the fixed question and chart
+format. Both ticker identities are hidden from the model.
+
+### 2. Open the decision inspector
+
+Select a session in **Per-session evidence** to see its submitted chart,
+selected judgment, and outcome probabilities. Calculated drawdowns and truth
+are shown for your evaluation; they are not sent to the model.
+
+![Decision inspector showing a synthetic abstention, calculated drawdowns, the submitted chart, and outcome probabilities](doc/screenshots/decision-inspector.png)
+
+An abstention is a result worth inspecting, not a missing answer to hide.
+The inspector also exposes the image hash and stored request and response.
+
+### 3. Evaluate more than one chart
+
+In **Historical evaluation**, choose a start date and chart count, preview the
+interval and maximum calls, then confirm the run. Review accuracy alongside
+answer coverage, probability losses, baselines, and per-session evidence.
+Export the JSON manifest or CSV to explore further.
+
+![Completed synthetic 10-chart historical evaluation with accuracy, abstention coverage, probability metrics, and export controls](doc/screenshots/historical-evaluation.png)
+
+This 10-chart example is exploratory. Its synthetic metrics demonstrate the
+report layout only; overlapping windows are not independent observations.
+Use **Run history** to reopen your own saved experiments.
 
 ## Use real data and Decision
 
