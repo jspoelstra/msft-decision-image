@@ -160,10 +160,6 @@ include revisions, and overlapping windows are dependent. Fewer than 30
 evaluated charts are flagged exploratory. Reading a chart correctly does not
 establish forecasting or trading ability. This is not investment advice.
 
-Old SPY-outperformance, five-band, and binary forecasting runs remain in **Run history**, labeled
-as legacy experiments with their original results and exports. They cannot
-resume under drawdown-comparison rules or supply cached drawdown scores.
-
 ## Verify the app
 
 ```bash
